@@ -1,0 +1,27 @@
+{
+    "name": "blendisnl/international-addresses",
+    "description": "Provides validation and formatting for international addresses.",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "require": {
+        "axlon/laravel-postal-code-validation": "^2.0"
+    },
+    "authors": [
+        {
+          "name": "Jacek Smit",
+          "email": "jacek@blendis.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BlendisNL\\InternationalAddresses\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BlendisNL\\InternationalAddresses\\ServiceProvider"
+            ]
+        }
+    }
+}
