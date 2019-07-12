@@ -34,9 +34,5 @@ class InternationalAddressesServiceProvider extends \Illuminate\Support\ServiceP
         $this->publishes([
             $viewPath => base_path('resources/views/vendor/international-addresses'),
         ], 'views');
-
-        validator()->extend('international_address', function ($attribute, $value, $parameters) {
-            return (new AddressValidator(request()))->passes($attribute, $value, $parameters);
-        });
     }
 }

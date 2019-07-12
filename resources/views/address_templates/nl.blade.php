@@ -1,4 +1,4 @@
-{{ $street }} {{ $houseNumber }} {{ $houseNumberExtension }}
+<!-- street -->{{ $street }} {{ $houseNumber }} {{ $houseNumberExtension }}
 @if ($extraAddressLine)
 {{ $extraAddressLine }}
 @endif

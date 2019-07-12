@@ -12,16 +12,49 @@ class ValidateInternationalAddressRequest extends FormRequest
     protected $countryCode;
 
     /**
+     * @var DefaultRules
+     */
+    protected $rulesContainer;
+
+    public function __construct(
+        array $query = [],
+        array $request = [],
+        array $attributes = [],
+        array $cookies = [],
+        array $files = [],
+        array $server = [],
+        $content = null
+    ) {
+        parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
+
+        $this->countryCode = $this->request->get('country_code', 'nl');
+        $rulesClass = '\BlendisNL\InternationalAddresses\Validation\Rules\\' . strtoupper($this->countryCode) . '\Rules';
+
+        $this->rulesContainer = new $rulesClass($this->request);
+    }
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
      * @return array
      */
     public function rules(): array
     {
-        $this->countryCode = $this->request->get('country_code', 'nl');
-        $rulesClass = '\BlendisNL\InternationalAddresses\Validation\\' . ucfirst($this->countryCode) . '\Rules';
-
-
-        /** @var DefaultRules $rulesObject */
-        $rulesObject = new $rulesClass($this->request);
-        return $rulesObject->getRules();
+        return $this->rulesContainer->getRules();
     }
+
+    public function messages()
+    {
+        return $this->rulesContainer->getMessages();
+    }
+
+
 }

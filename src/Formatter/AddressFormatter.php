@@ -22,19 +22,41 @@ class AddressFormatter
 
     /**
      * @param $addressFormattingStyle
+     * @param bool $returnWithPlaceholders
      * @return string
      * @throws Throwable
      */
-    public function getFormattedAddress($addressFormattingStyle)
+    public function getFullFormattedAddress($addressFormattingStyle, $returnWithPlaceholders = false)
     {
         $countryCode = $this->internationalAddress->getCountryCode();
         $data = $this->internationalAddress->getAddressArray();
 
-        $plainText = view('international-addresses::address_templates.' . $countryCode, $data)->render();
+        $output = view('international-addresses::address_templates.' . $countryCode, $data)->render();
 
         if ($addressFormattingStyle === AddressFormattingStyle::MULTILINE_HTML) {
-            return nl2br($plainText);
+            return nl2br($output);
         }
-        return $plainText;
+        if ($returnWithPlaceholders) {
+            return $output;
+        }
+        return $this->removePlaceholders($output);
+    }
+
+    public function getFullStreet()
+    {
+        $address =$this->getFullFormattedAddress(AddressFormattingStyle::MULTILINE_PLAIN_TEXT);
+        $lines = explode(PHP_EOL, $address);
+
+        foreach ($lines as $lineNumber => $line) {
+            if (strpos($line, '<!-- street -->') !== false) {
+                return $line;
+            }
+        }
+        return false;
+    }
+
+    private function removePlaceholders($string)
+    {
+        return preg_replace('/<!--(.|\s)*?-->/', '', $string);
     }
 }
