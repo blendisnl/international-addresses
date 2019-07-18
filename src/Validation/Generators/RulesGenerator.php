@@ -24,11 +24,11 @@ class RulesGenerator
 
     public function getRules()
     {
-        $this->rulesContainer->getRules();
+        return $this->rulesContainer->getRules();
     }
 
     public function getMessages()
     {
-        $this->rulesContainer->getMessages();
+        return $this->rulesContainer->getMessages();
     }
 }
