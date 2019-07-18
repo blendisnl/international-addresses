@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BlendisNL\\InternationalAddresses\\ServiceProvider"
+                "BlendisNL\\InternationalAddresses\\InternationalAddressesServiceProvider"
             ]
         }
     }
