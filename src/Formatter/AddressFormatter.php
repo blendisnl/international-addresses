@@ -40,7 +40,7 @@ class AddressFormatter
         $output = view($viewName, $data)->render();
         if ($addressFormattingStyle === AddressFormattingStyle::MULTILINE_HTML) {
             // Escape and then nl2br
-            return nl2br(e($output));
+            $output = nl2br(e($output));
         }
         if ($returnWithPlaceholders) {
             return $output;
@@ -65,6 +65,7 @@ class AddressFormatter
 
     private function removePlaceholders($string)
     {
-        return preg_replace('/<!--(.|\s)*?-->/', '', $string);
+        $string = preg_replace('/<!--(.|\s)*?-->/', '', $string);
+        return preg_replace('/&lt;!--(.|\s)*?--&gt;/', '', $string);
     }
 }
