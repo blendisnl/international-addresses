@@ -8,7 +8,7 @@ class Rules extends DefaultRules
 {
     /**
      * Here you can override the default rules
-     * @return array|void
+     * @return void
      */
     public function overrideRules()
     {
@@ -16,6 +16,10 @@ class Rules extends DefaultRules
         $this->rules['province'] = 'required';
     }
 
+    /**
+     * Here you can override the default messages
+     * @return void
+     */
     public function overrideMessages()
     {
         $this->messages['postal_code.postal_code'] = __('De opgegeven postcode is ongeldig');
