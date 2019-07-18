@@ -39,7 +39,8 @@ class AddressFormatter
 
         $output = view($viewName, $data)->render();
         if ($addressFormattingStyle === AddressFormattingStyle::MULTILINE_HTML) {
-            return nl2br($output);
+            // Escape and then nl2br
+            return nl2br(e($output));
         }
         if ($returnWithPlaceholders) {
             return $output;
