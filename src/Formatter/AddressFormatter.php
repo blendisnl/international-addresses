@@ -44,14 +44,16 @@ class AddressFormatter
 
     public function getFullStreet()
     {
-        $address =$this->getFullFormattedAddress(AddressFormattingStyle::MULTILINE_PLAIN_TEXT);
+        $address =$this->getFullFormattedAddress(AddressFormattingStyle::MULTILINE_PLAIN_TEXT, true);
+
         $lines = explode(PHP_EOL, $address);
 
         foreach ($lines as $lineNumber => $line) {
             if (strpos($line, '<!-- street -->') !== false) {
-                return $line;
+                return $this->removePlaceholders($line);
             }
         }
+
         return false;
     }
 

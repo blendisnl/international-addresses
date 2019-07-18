@@ -2,9 +2,8 @@
 namespace BlendisNL\InternationalAddresses;
 
 use BlendisNL\InternationalAddresses\Formatter\AddressFormatter;
-use BlendisNL\InternationalAddresses\Formatter\AddressFormattingStyle;
 use ReflectionClass;
-use BlendisNL\InternationalAddresses\InternationalAddress;
+use ReflectionException;
 
 class InternationalAddress
 {
@@ -58,6 +57,10 @@ class InternationalAddress
      */
     private $countryCode;
 
+    /**
+     * List of params required in the model for transforming models to objects of this class.
+     * The order must match the order in the constructor.
+     */
     public const ACCEPTED_FIELD_NAMES = [
         'country_code',
         'street',
@@ -144,7 +147,7 @@ class InternationalAddress
     /**
      * @param $model
      * @return InternationalAddress
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public static function createFromModelArray($model): InternationalAddress
     {
@@ -153,7 +156,11 @@ class InternationalAddress
             $params[] = $model->$field_name;
         }
         $reflector = new ReflectionClass(__CLASS__);
-        return $reflector->newInstanceArgs($params);
+
+        /** @var InternationalAddress $internationalAddress */
+        $internationalAddress = $reflector->newInstanceArgs($params);
+
+        return $internationalAddress;
     }
 
 }
