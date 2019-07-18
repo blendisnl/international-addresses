@@ -1,5 +1,5 @@
 <?php
-namespace BlendisNL\InternationalAddresses\Validation\Rules\AU;
+namespace BlendisNL\InternationalAddresses\Validation\Rules\US;
 
 use Axlon\PostalCodeValidation\Rules\PostalCode;
 use BlendisNL\InternationalAddresses\Validation\Rules\DefaultRules;
