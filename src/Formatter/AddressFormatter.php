@@ -30,9 +30,14 @@ class AddressFormatter
     {
         $countryCode = $this->internationalAddress->getCountryCode();
         $data = $this->internationalAddress->getAddressArray();
+        $viewName = 'international-addresses::address_templates.' . $countryCode;
 
-        $output = view('international-addresses::address_templates.' . $countryCode, $data)->render();
+        // If the template for this country is not found select The Netherlands as default
+        if (!view()->exists($viewName)) {
+            $viewName = 'international-addresses::address_templates.nl';
+        }
 
+        $output = view($viewName, $data)->render();
         if ($addressFormattingStyle === AddressFormattingStyle::MULTILINE_HTML) {
             return nl2br($output);
         }
