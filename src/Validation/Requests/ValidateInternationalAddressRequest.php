@@ -27,10 +27,17 @@ class ValidateInternationalAddressRequest extends FormRequest
     ) {
         parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
 
-        $this->countryCode = $this->request->get('country_code', 'nl');
+        if (!$this->countryCode) {
+            $this->countryCode = $request->get('country_code', 'nl');
+        }
+
         $rulesClass = '\BlendisNL\InternationalAddresses\Validation\Rules\\' . strtoupper($this->countryCode) . '\Rules';
 
-        $this->rulesContainer = new $rulesClass($this->request);
+        if (!class_exists($rulesClass)) {
+            $rulesClass = DefaultRules::class;
+        }
+
+        $this->rulesContainer = new $rulesClass($request);
     }
 
     /**

@@ -39,10 +39,15 @@ trait ValidateInternationalAddressTrait
         array $server = [],
         $content = null
     ) {
-        parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
+        if (!$this->countryCode) {
+            $this->countryCode = $request->get('country_code', 'nl');
+        }
 
-        $this->countryCode = $request->get('country_code', 'nl');
         $rulesClass = '\BlendisNL\InternationalAddresses\Validation\Rules\\' . strtoupper($this->countryCode) . '\Rules';
+
+        if (!class_exists($rulesClass)) {
+            $rulesClass = DefaultRules::class;
+        }
 
         $this->rulesContainer = new $rulesClass($request);
     }
