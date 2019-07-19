@@ -22,13 +22,29 @@ class RulesGenerator
         $this->rulesContainer = new $rulesClass();
     }
 
-    public function getRules()
+    /**
+     * @param bool $key
+     * @return array
+     */
+    public function getRules($key = false)
     {
-        return $this->rulesContainer->getRules();
+        $allRules = $this->rulesContainer->getRules();
+        if ($key) {
+            return $allRules[$key];
+        }
+        return $allRules;
     }
 
-    public function getMessages()
+    /**
+     * @param bool $key
+     * @return array|bool
+     */
+    public function getMessages($key = false)
     {
-        return $this->rulesContainer->getMessages();
+        $allMessages = $this->rulesContainer->getMessages();
+        if ($key) {
+            return $allMessages[$key] ?? false;
+        }
+        return $allMessages;
     }
 }
