@@ -24,7 +24,6 @@ class DefaultRules
             'house_number' => 'required|max:16',
             'house_number_extension' => 'nullable|max:16',
             'city' => 'required|max:64',
-            'country_code' => 'required|max:2',
             'postal_code' =>  'required'
         ];
 
@@ -41,8 +40,6 @@ class DefaultRules
             'postal_code.regex' => __('De postcode mag alleen letters en cijfers bevatten'),
             'city.required' => __('Vul a.u.b. een plaatnaam in'),
             'city.max' => __('De plaatsnaam mag maximaal :max karaters bevatten'),
-            'country_id.required' => __('Voer a.u.b. een geldig land code in'),
-            'country_id.max' => __('Land code mag maximaal 2 karakters bevatten')
         ];
     }
 
