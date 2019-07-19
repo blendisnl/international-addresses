@@ -13,7 +13,7 @@ class Rules extends DefaultRules
     public function overrideRules()
     {
         $this->rules['postal_code'] = ['required', PostalCode::forCountry('US')];
-        $this->rules['province'] = 'required';
+        $this->rules['province'] = ['required'];
     }
 
     /**

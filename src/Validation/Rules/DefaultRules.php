@@ -19,11 +19,11 @@ class DefaultRules
     public function __construct()
     {
         $this->rules = [
-            'street' => 'required|max:64',
-            'house_number' => 'required|max:16',
-            'house_number_extension' => 'nullable|max:16',
-            'city' => 'required|max:64',
-            'postal_code' =>  'required'
+            'street' => ['required', 'max:64'],
+            'house_number' => ['required', 'max:16'],
+            'house_number_extension' => ['nullable', 'max:16'],
+            'city' => ['required', 'max:64'],
+            'postal_code' =>  ['required'],
         ];
 
         $this->messages =  [
