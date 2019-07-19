@@ -19,7 +19,6 @@ class DefaultRules
     public function __construct()
     {
         $this->rules = [
-            'name' => 'required|max:100',
             'street' => 'required|max:64',
             'house_number' => 'required|max:16',
             'house_number_extension' => 'nullable|max:16',
@@ -28,8 +27,6 @@ class DefaultRules
         ];
 
         $this->messages =  [
-            'name.required' => __('Vul a.u.b. een voornaam in'),
-            'name.max' => __('De achternaam mag maximaal :max karaters bevatten'),
             'street.required' => __('Vul a.u.b. een straatnaam in'),
             'street.max' => __('De straatnaam mag maximaal :max karaters bevatten'),
             'house_number.required' => __('Vul a.u.b. een huisnummer in'),
