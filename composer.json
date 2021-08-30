@@ -4,8 +4,8 @@
     "minimum-stability": "stable",
     "license": "proprietary",
     "require": {
-        "php": ">=7.0",
-        "axlon/laravel-postal-code-validation": "^2.0"
+        "php": ">=7.0 || >=8.0",
+        "axlon/laravel-postal-code-validation": "^3.0"
 
     },
     "authors": [
