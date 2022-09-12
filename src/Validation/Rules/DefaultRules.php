@@ -27,16 +27,16 @@ class DefaultRules
         ];
 
         $this->messages =  [
-            'street.required' => __('Vul a.u.b. een straatnaam in'),
-            'street.max' => __('De straatnaam mag maximaal :max karaters bevatten'),
-            'house_number.required' => __('Vul a.u.b. een huisnummer in'),
-            'house_number.max' => __('Het huisnummer mag maximaal :max karaters bevatten'),
-            'house_number_extension.max' => __('De huisnummer toevoeging mag maximaal :max karaters bevatten'),
-            'postal_code.required' => __('Vul a.u.b. een postcode in'),
-            'postal_code.max' => __('De postcode mag maximaal :max karaters bevatten'),
-            'postal_code.regex' => __('De postcode mag alleen letters en cijfers bevatten'),
-            'city.required' => __('Vul a.u.b. een plaatnaam in'),
-            'city.max' => __('De plaatsnaam mag maximaal :max karaters bevatten'),
+            'street.required' => __('international-addresses::validation.street.required'),
+            'street.max' => __('international-addresses::validation.street.max'),
+            'house_number.required' => __('international-addresses::validation.house_number.required'),
+            'house_number.max' => __('international-addresses::validation.house_number.max'),
+            'house_number_extension.max' => __('international-addresses::validation.house_number.extension_max'),
+            'postal_code.required' => __('international-addresses::validation.postal_code.required'),
+            'postal_code.max' => __('international-addresses::validation.postal_code.max'),
+            'postal_code.regex' => __('international-addresses::validation.postal_code.regex'),
+            'city.required' => __('international-addresses::validation.city.required'),
+            'city.max' => __('international-addresses::validation.street.max'),
         ];
     }
 

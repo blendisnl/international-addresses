@@ -17,6 +17,6 @@ class Rules extends DefaultRules
 
     public function overrideMessages()
     {
-        $this->messages['postal_code.postal_code'] = __('De opgegeven postcode is ongeldig');
+        $this->messages['postal_code.postal_code'] = __('international-addresses::validation.postal_code.invalid');
     }
 }
