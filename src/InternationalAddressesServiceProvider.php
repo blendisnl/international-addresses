@@ -34,5 +34,11 @@ class InternationalAddressesServiceProvider extends \Illuminate\Support\ServiceP
         $this->publishes([
             $viewPath => base_path('resources/views/vendor/international-addresses'),
         ], 'views');
+
+        $this->publishes([
+            __DIR__.'/../lang' => $this->app->langPath('vendor/international-addresses'),
+        ]);
+
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'international-addresses');
     }
 }
